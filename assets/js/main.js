@@ -1,6 +1,5 @@
 /**
  * Velvet Vogue - Customer Front-end JavaScript
- * Author: Antigravity AI
  */
 
 document.addEventListener('DOMContentLoaded', function () {

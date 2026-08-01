@@ -1,6 +1,5 @@
 /**
  * Velvet Vogue - Admin Panel JavaScript
- * Author: Antigravity AI
  */
 
 document.addEventListener('DOMContentLoaded', function() {
