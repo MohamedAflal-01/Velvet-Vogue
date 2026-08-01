@@ -1,0 +1,914 @@
+/* Velvet Vogue - Ultra Premium Luxury Glassmorphism UI */
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #1e1b4b; /* Deep Luxury Indigo */
+    --accent-color: #db2777; /* Luxury Pink-Magenta */
+    --accent-hover: #9333ea; /* Purple */
+    --text-main: #1f2937; /* Off-black slate-800 for high-contrast light-mode readability */
+    --text-muted: #4b5563;
+    --bg-dark: #fdfafc; /* Light canvas */
+    
+    /* Glassmorphism properties */
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(219, 39, 119, 0.12);
+    --glass-shadow: 0 16px 40px 0 rgba(147, 51, 234, 0.07);
+    
+    --card-shadow: 0 10px 30px rgba(147, 51, 234, 0.05);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 0%, #fdf4ff 0%, #f3e8ff 50%, #faf5ff 100%);
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--secondary-color);
+}
+
+.text-gold {
+    color: var(--accent-color) !important;
+}
+
+.bg-gold {
+    background-color: var(--accent-color) !important;
+    color: #000000 !important;
+}
+
+/* Navbar Floating Glassmorphism capsule layout - Enlarged & Rounded */
+.navbar {
+    position: fixed !important;
+    top: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 93% !important;
+    max-width: 1350px !important;
+    border-radius: 50px !important;
+    background: rgba(255, 255, 255, 0.78) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(219, 39, 119, 0.15) !important;
+    box-shadow: 0 20px 45px rgba(147, 51, 234, 0.08) !important;
+    padding: 16px 35px !important;
+    z-index: 1050 !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    padding-top: 140px !important;
+}
+
+.navbar-brand {
+    letter-spacing: 5px;
+    font-size: 1.65rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1e1b4b 30%, #db2777 65%, #9333ea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+.nav-link {
+    color: #1e1b4b !important;
+    text-transform: uppercase;
+    font-size: 0.88rem;
+    letter-spacing: 1.8px;
+    font-weight: 500;
+    padding: 10px 18px !important;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 60%;
+}
+
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-color) !important;
+}
+
+/* Global Glassmorphic Card Override */
+.card, .glass-card {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--glass-shadow) !important;
+    color: var(--text-main) !important;
+}
+
+.card-header, .card-footer {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-color: var(--glass-border) !important;
+    color: var(--secondary-color) !important;
+}
+
+/* Product Cards */
+.product-card {
+    border: 1px solid var(--glass-border) !important;
+    background: rgba(255, 255, 255, 0.65) !important;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s, box-shadow 0.4s;
+    box-shadow: 0 10px 30px rgba(147, 51, 234, 0.04) !important;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(219, 39, 119, 0.35) !important;
+    box-shadow: 0 15px 40px rgba(219, 39, 119, 0.15) !important;
+}
+
+.product-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .product-img-wrap img {
+    transform: scale(1.06);
+}
+
+/* Premium Floating Glass Action Dock on Product Cards */
+.product-actions {
+    position: absolute;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(20px) !important;
+    width: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(219, 39, 119, 0.15) !important;
+    border-radius: 40px !important;
+    padding: 8px 16px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    box-shadow: 0 10px 30px rgba(147, 51, 234, 0.1) !important;
+    z-index: 10 !important;
+}
+
+.product-card:hover .product-actions {
+    transform: translateX(-50%) translateY(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    bottom: 20px !important;
+}
+
+/* Restyle buttons inside actions dock to minimal circle icons */
+.product-actions form, .product-actions .d-inline {
+    display: inline-flex !important;
+    margin: 0 !important;
+}
+
+.product-actions .btn, .product-actions a {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    font-size: 0 !important; /* Hide text */
+    background: transparent !important;
+    border: 1px solid rgba(219, 39, 119, 0.15) !important;
+    color: #1e1b4b !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.product-actions .btn i, .product-actions a i {
+    font-size: 0.95rem !important; /* Restore icon size */
+}
+
+/* Hover highlights */
+.product-actions .btn:hover, .product-actions a:hover {
+    background: rgba(219, 39, 119, 0.08) !important;
+    border-color: var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    transform: scale(1.08) !important;
+}
+
+/* Wishlist heart red text override */
+.product-actions .text-danger {
+    color: #dc3545 !important;
+}
+.product-actions .text-danger:hover {
+    color: #ff4d5e !important;
+    border-color: #ff4d5e !important;
+}
+
+
+/* Luxury Buttons */
+.btn-luxury {
+    background-color: var(--accent-color) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--accent-color) !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    border-radius: 8px !important;
+    padding: 10px 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-luxury:hover {
+    background-color: transparent !important;
+    color: var(--accent-color) !important;
+    box-shadow: 0 0 20px rgba(217, 70, 239, 0.35) !important;
+}
+
+.btn-outline-luxury {
+    background-color: transparent !important;
+    color: var(--accent-color) !important;
+    border: 1px solid var(--accent-color) !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    border-radius: 8px !important;
+    padding: 10px 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-outline-luxury:hover {
+    background-color: var(--accent-color) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(219, 39, 119, 0.2) !important;
+}
+
+/* Glass Form Controls */
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.5) !important;
+    border: 1px solid rgba(219, 39, 119, 0.15) !important;
+    color: #1e1b4b !important;
+    border-radius: 8px !important;
+    padding: 12px 18px !important;
+    transition: all 0.3s ease;
+}
+
+.form-select option, select option {
+    background-color: #ffffff !important;
+    color: #1e1b4b !important;
+}
+
+.form-control:focus, .form-select:focus {
+    background: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 0 15px rgba(219, 39, 119, 0.2) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.form-control::placeholder {
+    color: rgba(30, 27, 75, 0.4) !important;
+}
+
+/* List Groups */
+.list-group-item {
+    background: transparent !important;
+    color: var(--text-main) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+    padding: 14px 20px !important;
+}
+
+.list-group-item.active {
+    background: var(--accent-color) !important;
+    color: #000000 !important;
+    font-weight: 600;
+    border-color: var(--accent-color) !important;
+}
+
+.list-group-item-action:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: var(--accent-color) !important;
+}
+
+/* Tables */
+.table {
+    color: var(--text-main) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.table th, .table td {
+    background: transparent !important;
+    color: var(--text-main) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+    padding: 14px !important;
+}
+
+.table thead th {
+    color: var(--secondary-color) !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.table-hover tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.02) !important;
+    color: var(--secondary-color) !important;
+}
+
+/* Glass Dropdowns */
+.dropdown-menu {
+    background: rgba(15, 15, 22, 0.92) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--glass-shadow) !important;
+    padding: 8px 0 !important;
+}
+
+.dropdown-item {
+    color: #ffffff !important;
+    padding: 10px 20px !important;
+    transition: all 0.3s;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: var(--accent-color) !important;
+}
+
+/* Modal styling */
+.modal-content {
+    background: rgba(18, 18, 24, 0.95) !important;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    color: var(--text-main);
+}
+
+.modal-header, .modal-footer {
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Glass Alerts */
+.alert {
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    color: var(--text-main) !important;
+    border-radius: 12px !important;
+}
+
+.alert-danger {
+    border-left: 4px solid #dc3545 !important;
+}
+
+.alert-success {
+    border-left: 4px solid #198754 !important;
+}
+
+.alert-warning {
+    border-left: 4px solid #ffc107 !important;
+}
+
+/* Custom Text and Badge overrides */
+.text-dark {
+    color: var(--secondary-color) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.bg-light {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.bg-white {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Hero Section Overlay */
+.hero-section {
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(250,245,255,0.85) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+}
+
+/* Badge styles */
+.badge {
+    padding: 6px 12px !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+}
+
+/* Animations */
+.fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll To Top button */
+#scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    border-radius: 50% !important;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(219, 39, 119, 0.25);
+}
+
+/* Toast Notification Styles */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    width: 100%;
+}
+
+.luxury-toast {
+    background: rgba(11, 11, 15, 0.85) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: #fff;
+    border-left: 4px solid var(--accent-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: toastSlideIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards, toastFadeOut 0.4s ease forwards 2.7s;
+}
+
+.luxury-toast.toast-error {
+    border-left-color: #dc3545;
+}
+
+.luxury-toast.toast-info {
+    border-left-color: #0dcaf0;
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes toastFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Additional Glassmorphism Details */
+
+/* Search form button overlay fix */
+.input-group .bg-white {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.input-group .btn-outline-secondary {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--accent-color) !important;
+    transition: all 0.3s ease;
+}
+
+.input-group .btn-outline-secondary:hover {
+    background-color: var(--accent-color) !important;
+    color: #000000 !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Category cards translucent footer overlay */
+.card-body.bg-dark {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(219, 39, 119, 0.1) !important;
+    color: var(--text-main) !important;
+}
+
+.card-body.bg-dark h5 {
+    color: var(--secondary-color) !important;
+}
+
+/* Flash sale promo banner glass overlay */
+.bg-dark.py-5.my-5 {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(217, 70, 239, 0.3) !important;
+    border-bottom: 1px solid rgba(217, 70, 239, 0.3) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+}
+
+/* Checkout glassmorphic sections and orders */
+.checkout-section, .order-summary-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+}
+
+/* Navbar Search Capsule */
+.search-wrapper {
+    position: relative;
+    width: 180px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.search-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(219, 39, 119, 0.15) !important;
+    border-radius: 30px !important;
+    padding: 8px 36px 8px 18px !important;
+    color: #1e1b4b !important;
+    font-size: 0.8rem !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    outline: none !important;
+}
+
+/* Dynamic expand on active focus state */
+.search-wrapper:focus-within {
+    width: 250px;
+}
+
+.search-input:focus {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 15px rgba(219, 39, 119, 0.2) !important;
+}
+
+.search-btn {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent !important;
+    border: none !important;
+    color: rgba(30, 27, 75, 0.4) !important;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.search-btn:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Navbar Toggler (Mobile Menu Button) - Pink for visibility on glass bg */
+.navbar-toggler {
+    border-color: var(--accent-color) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23db2777' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Navbar Badge Glow */
+.navbar .badge {
+    background-color: var(--accent-color) !important;
+    color: #ffffff !important;
+    font-size: 0.65rem !important;
+    padding: 3px 6px !important;
+    border: 1px solid #ffffff !important;
+    box-shadow: 0 0 10px rgba(219, 39, 119, 0.3) !important;
+}
+
+/* Scroll-Reveal Helper Animations */
+.scroll-reveal {
+    opacity: 0 !important;
+    transform: translateY(40px) !important;
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Custom Homepage Glassmorphism Components */
+.hero-glass-card {
+    background: rgba(11, 11, 15, 0.45) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.promo-glass-banner {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(219, 39, 119, 0.15) !important;
+    border-top: 2px solid var(--accent-color) !important;
+    border-bottom: 2px solid var(--accent-color) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 40px rgba(147, 51, 234, 0.06) !important;
+    color: #ffffff !important;
+    background: #1e1b4b !important;
+}
+
+/* Slideshow Background Slides */
+.promo-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: promoFade 20s infinite;
+    z-index: 0;
+}
+
+.promo-slide-1 {
+    background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2070&auto=format&fit=crop');
+    animation-delay: 0s;
+}
+
+.promo-slide-2 {
+    background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop');
+    animation-delay: 5s;
+}
+
+.promo-slide-3 {
+    background-image: url('https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=2071&auto=format&fit=crop');
+    animation-delay: 10s;
+}
+
+.promo-slide-4 {
+    background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2032&auto=format&fit=crop');
+    animation-delay: 15s;
+}
+
+@keyframes promoFade {
+    0%   { opacity: 0; }
+    5%   { opacity: 1; }
+    25%  { opacity: 1; }
+    30%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Dark overlay on top of slides for text readability */
+.promo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 27, 75, 0.45);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+.promo-content {
+    position: relative;
+    z-index: 2;
+}
+
+.promo-glass-banner p {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.promo-glass-banner .text-gold {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.promo-glass-banner .btn-luxury {
+    box-shadow: 0 4px 20px rgba(219, 39, 119, 0.4) !important;
+}
+
+.brand-glass-track {
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(219, 39, 119, 0.15) !important;
+    border-radius: 40px !important;
+    box-shadow: 0 10px 30px rgba(147, 51, 234, 0.04) !important;
+    padding: 20px !important;
+}
+
+.brand-glass-track h5 {
+    color: var(--secondary-color) !important;
+}
+
+/* Light Mode Overrides */
+.hero-glass-card h1, .hero-glass-card .text-white {
+    color: var(--secondary-color) !important;
+}
+.hero-glass-card p, .hero-glass-card .text-white-50 {
+    color: var(--text-main) !important;
+    opacity: 0.85;
+}
+
+footer.bg-dark {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(219, 39, 119, 0.15) !important;
+    color: var(--text-main) !important;
+}
+footer.bg-dark h5, footer.bg-dark strong, footer.bg-dark a {
+    color: var(--secondary-color) !important;
+}
+footer.bg-dark .text-white {
+    color: var(--text-main) !important;
+}
+footer.bg-dark .btn-floating {
+    color: var(--secondary-color) !important;
+}
+
+.toast-container .luxury-toast {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: var(--text-main) !important;
+    border-top: 1px solid rgba(219, 39, 119, 0.15);
+    border-right: 1px solid rgba(219, 39, 119, 0.15);
+    border-bottom: 1px solid rgba(219, 39, 119, 0.15);
+    box-shadow: 0 20px 40px rgba(147, 51, 234, 0.08) !important;
+}
+
+/* Custom form range styling to make it visible and luxurious with pink progress fill */
+.form-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, var(--accent-color) 0%, var(--accent-color) var(--percent, 50%), rgba(30, 27, 75, 0.15) var(--percent, 50%)) !important;
+    outline: none;
+    margin: 10px 0;
+}
+
+.form-range:focus {
+    outline: 0;
+}
+
+.form-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: transparent !important;
+    border-radius: 3px;
+    border: none;
+}
+
+.form-range::-webkit-slider-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: var(--accent-color) !important;
+    cursor: pointer;
+    appearance: none;
+    margin-top: -6px;
+    box-shadow: 0 0 10px rgba(219, 39, 119, 0.3);
+    transition: background-color 0.15s ease-in-out, transform 0.1s ease;
+    border: 2px solid #ffffff !important;
+}
+
+.form-range::-webkit-slider-thumb:hover {
+    background: var(--accent-hover) !important;
+    transform: scale(1.1);
+}
+
+.form-range::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: rgba(30, 27, 75, 0.15) !important;
+    border-radius: 3px;
+    border: none;
+}
+
+.form-range::-moz-range-progress {
+    background-color: var(--accent-color) !important;
+    height: 6px;
+    border-radius: 3px;
+}
+
+.form-range::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: var(--accent-color) !important;
+    cursor: pointer;
+    border: 2px solid #ffffff !important;
+    box-shadow: 0 0 10px rgba(219, 39, 119, 0.3);
+    transition: background-color 0.15s ease-in-out, transform 0.1s ease;
+}
+
+.form-range::-moz-range-thumb:hover {
+    background: var(--accent-hover) !important;
+    transform: scale(1.1);
+}
+
+
+
+
+
